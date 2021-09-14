@@ -22,7 +22,7 @@ this is educational project to practice Next.js in real CRUD App
 ## Help
 
 ```
-npm help  
+npm help 
 
 ```
 
