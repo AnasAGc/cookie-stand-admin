@@ -1,36 +1,48 @@
-import React,{ useState } from "react";
+import React,{ useState,useEffect } from "react";
+import useResource from '../hooks/useResource';
+import { useAuth } from '../contexts/auth';
+
+
 export default function CreateForm({onCreate}) {
    
-
-
+    const {user,tokens}=useAuth();
+    const { resources, loading, createResource, deleteResource } = useResource();
     const data = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm']
-
+    // const [dataStore,setdataStore]=useState({})
     function formhandler(event){
         event.preventDefault();
         
         
         const storeCity={
             location:event.target.location.value,
-            min:event.target.min.value,
-            max:event.target.max.value,
-            avg:event.target.avg.value,
+            minimum_customers_per_hour:event.target.min.value,
+            maximum_customers_per_hour:event.target.max.value,
+            average_cookies_per_sale:event.target.avg.value,
+            hourly_sales:data.map(() => {
+                return Math.floor(Math.random() * parseInt(event.target.avg.value) * (parseInt(event.target.max.value) - parseInt(event.target.min.value) + 1) + parseInt(event.target.min.value))
+            }),
+            owner:user.id,
         }
-
-        const hourlySales=data.map(()=>{
-            return Math.floor(Math.random() * parseInt(storeCity.avg) * (parseInt(storeCity.max) - parseInt(storeCity.min)+ 1) + parseInt(storeCity.min))
-         })
-         
-
-        const newStore={
-            location:event.target.location.value,
-            hourlySales:hourlySales,
-            sum:hourlySales.reduce((a, b) => a + b, 0)
-
-        }
-
-        onCreate(newStore)
+        
+        createResource(storeCity)
+        // setdataStore(storeCity)
 
     }
+
+    useEffect(()=>{
+        if(resources){
+        onCreate(resources)}
+    },[resources])
+
+
+    // useEffect(() => {
+    //     if (resources){
+    //      setStore( resources)
+    //     }
+    //     console.log(store);
+
+    // }, [resources,store])
+
     
     return (
         <div>

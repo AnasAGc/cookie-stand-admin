@@ -3,9 +3,12 @@ import Header from '../components/Header'
 import React, { useState } from 'react'
 import Main from '../components/Main'
 import Link from 'next/link'
-
+import LoginForm from '../components/LoginForm'
+import { useAuth } from '../contexts/auth'
 
 export default function Home() {
+  const { user, login, logout } = useAuth();
+  
   return (
     <div>
 
@@ -21,7 +24,7 @@ export default function Home() {
         </Link>
       </Header>
 
-      <Main />
+      {user? <Main /> : <LoginForm/> }
 
 
 

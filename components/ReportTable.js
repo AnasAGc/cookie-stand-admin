@@ -1,11 +1,14 @@
+
+
 export default function ReportTable({store,total}){
 
     const data = ['Location','6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','Totals']
 
-
     return(
         <>
+        
         {store.length?
+
          <table className="mx-auto w-1/2 my-4">
           <thead>
 
@@ -25,19 +28,19 @@ export default function ReportTable({store,total}){
                 <td className="pl-2 border border-gray-700">{item.location}</td>
                 {   
 
-                    item.hourlySales.map((hour,key)=>
+                    item.hourly_sales.map((hour,key)=>
                 <td key={`${key}`} className="pl-2 border border-gray-700">{hour}</td>
                 )}
-                <td className="pl-2 border border-gray-700">{item.sum}</td>
+                {/* <td className="pl-2 border border-gray-700">{item.sum}</td> */}
               </tr>))}
 
               <tr className='bg-green-500'>
                   <th className="pl-2 border border-gray-700" >Totals</th>
-                  {
+                  {/* {
                       total[0].map((item,key) =>
                     <td key={`${key}`} className="pl-2 border border-gray-700" > {item}</td>
                       )}
-                      <td className="pl-2 border border-gray-700" > {total[1]}</td>
+                      <td className="pl-2 border border-gray-700" > {total[1]}</td> */}
 
               </tr>
           </tbody>

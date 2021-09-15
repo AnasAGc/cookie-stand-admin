@@ -5,15 +5,16 @@ import Footer from './Footer'
 
 export default function Main() {
    
-    const [store , setStore]=useState([])
+    const [store , setStore]=useState([0])
     const [total , setTotal]=useState([])
    
    
    
     function  onCreate(newstore)
    {
-       setStore(store=>[...store,newstore])
-       sumtatals()
+       setStore(newstore)
+       console.log(newstore);
+    //    sumtatals()
        
     }
 
