@@ -2,7 +2,7 @@ import axios from 'axios'
 import useSWR from 'swr'
 
 // export const apiUrl = process.env.NEXT_PUBLIC_RESOURCE_URL;
-export const apiUrl = 'http://localhost:8000/api/v1/cookies/';
+export const apiUrl = 'https://cookie-stand-apii.herokuapp.com/api/v1/cookies/';
 import { useAuth } from '../contexts/auth'
 
 export default function useResource() {

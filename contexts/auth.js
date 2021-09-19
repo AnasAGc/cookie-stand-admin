@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import axios from 'axios'
 // const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-const baseUrl = "http://127.0.0.1:8000";
+const baseUrl = "https://cookie-stand-apii.herokuapp.com";
 const tokenUrl = baseUrl + '/api/token/';
 
 const AuthContext = createContext();
